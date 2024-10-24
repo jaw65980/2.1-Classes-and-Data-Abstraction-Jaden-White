@@ -10,7 +10,8 @@ public:
     void counterinput(int usernumber)
     {
         string command;
-        cout << "type decrement " << endl;
+        cout << "Enter a command below: " << endl << "Type decrement to decrease the number by one (number must be a positive integer)." << endl << "Type increment to increase the number by one." << endl;
+        cout << "Type reset to reset the number back to zero." << endl << "Type set to set a new number." << endl;
         cin >> command;
         if (command == "decrement")
         {
@@ -20,6 +21,17 @@ public:
         {
             increment(usernumber);
         }
+        if (command == "reset")
+        {
+            reset(usernumber);
+        }
+        if (command == "set")
+        {
+            cout << endl;
+            set(usernumber);
+        }
+        cout << endl;
+        counterinput(usernumber);
     }
 
 private:
@@ -28,13 +40,13 @@ private:
         usernumber = usernumber--;
         if (usernumber < 0)
         {
-            cout << "This number is invalid" << endl;
+            cout << endl << endl << "This number is invalid" << endl;
             usernumber = 0;
             counterinput(usernumber);
         }
         else
         {
-            cout << usernumber << endl;
+            cout << endl << "Your new number is " << usernumber << endl;
             counterinput(usernumber);
         }
     }
@@ -42,13 +54,21 @@ private:
     void increment(int usernumber)
     {
         usernumber = usernumber++;
-        cout << usernumber << endl;
+        cout << endl << "Your new number is " << usernumber << endl;
         counterinput(usernumber);
     }
 
     void reset(int usernumber)
     {
         usernumber = 0;
+        cout << endl << "Your new number is " << usernumber << endl;
+        counterinput(usernumber);
+    }
+
+    void set(int usernumber)
+    {
+        cin >> usernumber;
+        cout << endl << "Your new number is " << usernumber << endl;
         counterinput(usernumber);
     }
 };
